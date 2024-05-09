@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Employment record!</title>
+    <script type="text/javascript" src="/static/update.js"></script>
+    <link href="static/company.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Places of work:</h1>
+    <h2>Add new company:</h2>
+    <form>
+        <div>
+            <input type="text" name="comp_name" id="comp_name">
+            <label for="comp_name">Company name</label>
+        </div>
+        <div>
+            <input type="number" name="term" id="term">
+            <label for="term">Term  (months)</label>
+        </div>
+        <button onClick="addCompany()">Add</button>
+    </form>
+    <h3>Total experience: {{experience}} months</h3>
+
+    <ul>
+        {% for company in companies_list %}
+        <li>
+            <div>
+                <div>{{ company['comp_name'] }}</div>
+                <div>{{ company['term'] }} mon.</div>
+
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
