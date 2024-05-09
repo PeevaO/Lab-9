@@ -20,17 +20,16 @@ class Company(db.Model):
         return f'Company{self.id}. {self.comp_name} - {self.term} mon.'
 
 
-
 @app.route('/')
 def main():
     companies = Company.query.all()
 
     time = 0
     for i in range(len(companies)):
-        slice = str(companies[i])
-        flag1 = slice.find(' - ') + 3
-        flag2 = slice.find(' mon.')
-        period = slice[flag1:flag2]
+        data = str(companies[i])
+        flag1 = data.find(' - ') + 3
+        flag2 = data.find(' mon.')
+        period = data[flag1:flag2]
         time += int(period)
 
     return render_template('my.html', companies_list=companies,
@@ -51,4 +50,3 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-
